@@ -25,13 +25,23 @@ const __dirname = path.dirname(__filename)
 
 const app = express()
 
-// Allow localhost on any port in dev, or a specific origin via CORS_ORIGIN
+// Allow localhost, any origin listed in CORS_ORIGIN (comma-separated), and *.vercel.app
 const corsOrigin = (origin, callback) => {
-	const envOrigin = process.env.CORS_ORIGIN
-	if (!origin) return callback(null, true)
-	if (envOrigin && origin === envOrigin) return callback(null, true)
-	if (origin.startsWith('http://localhost:')) return callback(null, true)
-	return callback(null, false)
+    const envOrigins = (process.env.CORS_ORIGIN || '')
+        .split(',')
+        .map(s => s.trim())
+        .filter(Boolean)
+
+    if (!origin) return callback(null, true)
+    if (envOrigins.includes(origin)) return callback(null, true)
+    if (origin.startsWith('http://localhost:') || origin.startsWith('https://localhost:')) return callback(null, true)
+
+    try {
+        const u = new URL(origin)
+        if (u.hostname.endsWith('.vercel.app')) return callback(null, true)
+    } catch {}
+
+    return callback(null, false)
 }
 app.use(cors({ origin: corsOrigin, credentials: true }))
 app.use(morgan('dev'))
