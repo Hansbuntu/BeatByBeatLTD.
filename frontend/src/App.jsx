@@ -20,6 +20,7 @@ import Checkout from './pages/Checkout.jsx'
 import Library from './pages/Library.jsx'
 import Submit from './pages/Submit.jsx'
 import Account from './pages/Account.jsx'
+import About from './pages/About.jsx'
 import AdminProducts from './pages/AdminProducts.jsx'
 import AdminOrders from './pages/AdminOrders.jsx'
 import AdminSubmissions from './pages/AdminSubmissions.jsx'
@@ -47,6 +48,7 @@ function App() {
             <Route path="/library" element={<Library />} />
             <Route path="/submit" element={<Submit />} />
             <Route path="/account" element={<Account />} />
+            <Route path="/about" element={<About />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/posts" element={<AdminPosts />} />
             <Route path="/admin/products" element={<AdminProducts />} />
@@ -59,7 +61,7 @@ function App() {
       </main>
       <footer className="border-t-2 border-black dark:border-white pb-14">
         <div className="max-w-5xl mx-auto px-4 py-4 text-sm text-black dark:text-white opacity-70">
-          © {new Date().getFullYear()} beatsbybeatsltd
+          © {new Date().getFullYear()} <span className="font-extrabold uppercase tracking-wide">BeatByBeatRecordLtd</span>
         </div>
       </footer>
       <BottomNav />

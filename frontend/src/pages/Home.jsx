@@ -120,7 +120,7 @@ export default function Home() {
 			<div className="border-4 border-black dark:border-white rounded-xl p-6 shadow-[6px_6px_0_0_rgba(0,0,0,1)] flex items-center justify-between">
 				<div>
 					<h3 className="text-xl font-extrabold">Exclusive Drops</h3>
-					<p className="opacity-80">Unique releases available only on beatbybeatrecordltd</p>
+					<p className="opacity-80">Unique releases available only on <span className="font-extrabold uppercase tracking-wide">BeatByBeatRecordLtd</span></p>
 				</div>
 				<Link to="/store" className="px-4 py-2 border-2 border-black dark:border-white rounded-lg font-bold hover:opacity-80">Visit Store</Link>
 			</div>

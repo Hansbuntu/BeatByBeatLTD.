@@ -16,8 +16,8 @@ export default function DualHeader() {
             <NavLink to="/store" className="hover:opacity-80">Store</NavLink>
           </nav>
           <div className="flex items-center justify-center">
-            <Link to="/" className="text-2xl font-extrabold tracking-wide text-black dark:text-white">
-              beatbybeatrecordltd
+            <Link to="/" className="text-2xl font-extrabold tracking-wide text-black dark:text-white hover:opacity-80 transition uppercase">
+              BeatByBeatRecordLtd
             </Link>
           </div>
           <div className="flex items-center justify-end gap-3">
@@ -35,8 +35,8 @@ export default function DualHeader() {
       {/* Mobile logo bar */}
       <div className="md:hidden border-b-2 border-black dark:border-white">
         <div className="px-4 py-3 flex items-center justify-between">
-          <Link to="/" className="text-xl font-extrabold tracking-wide text-black dark:text-white">
-            beatbybeatrecordltd
+          <Link to="/" className="text-xl font-extrabold tracking-wide text-black dark:text-white hover:opacity-80 transition uppercase">
+            BeatByBeatRecordLtd
           </Link>
           <div className="flex items-center gap-2">
             <SearchBar />
