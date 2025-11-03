@@ -40,7 +40,8 @@ router.post('/complete', requireAuth, async (req, res) => {
 
     res.json({ ok: true, orderId: order._id })
   } catch (e) {
-    res.status(400).json({ error: 'Failed to complete demo purchase' })
+    console.error('Demo checkout error:', e)
+    res.status(400).json({ error: e.message || 'Failed to complete demo purchase' })
   }
 })
 

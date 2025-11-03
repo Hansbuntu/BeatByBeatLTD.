@@ -5,7 +5,6 @@ import { useAuth } from '../hooks/useAuth.js'
 
 export default function DualHeader() {
   const { isAuthenticated, logout } = useAuth()
-  const isDemo = (import.meta.env.VITE_DEMO_MODE || '').toString() === 'true'
 
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-black border-b-2 border-black dark:border-white shadow">
@@ -22,7 +21,24 @@ export default function DualHeader() {
             </Link>
           </div>
           <div className="flex items-center justify-end gap-3">
-            {isDemo && <span className="px-2 py-1 text-xs font-bold border-2 border-black dark:border-white rounded">DEMO</span>}
+            <SearchBar />
+            <ThemeToggle />
+            {isAuthenticated ? (
+              <button onClick={logout} className="text-sm text-black dark:text-white hover:opacity-80">Logout</button>
+            ) : (
+              <NavLink to="/login" className="text-sm text-black dark:text-white hover:opacity-80">Login</NavLink>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile logo bar */}
+      <div className="md:hidden border-b-2 border-black dark:border-white">
+        <div className="px-4 py-3 flex items-center justify-between">
+          <Link to="/" className="text-xl font-extrabold tracking-wide text-black dark:text-white">
+            beatbybeatrecordltd
+          </Link>
+          <div className="flex items-center gap-2">
             <SearchBar />
             <ThemeToggle />
             {isAuthenticated ? (

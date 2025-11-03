@@ -36,7 +36,9 @@ export default function Checkout() {
       setNotice('Demo purchase completed. Your order is confirmed.')
       setItems([])
     } catch (e) {
-      setErr('Failed to complete demo purchase')
+      const msg = e.message || 'Failed to complete demo purchase'
+      setErr(msg)
+      console.error('Demo checkout error:', e)
     }
   }
 

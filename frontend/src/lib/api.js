@@ -9,7 +9,14 @@ function getHeaders() {
 
 export async function apiGet(path) {
 	const res = await fetch(`${API_URL}${path}`, { headers: getHeaders() })
-	if (!res.ok) throw new Error(`GET ${path} failed`)
+	if (!res.ok) {
+		let errorMsg = `GET ${path} failed`
+		try {
+			const data = await res.json()
+			if (data.error) errorMsg = data.error
+		} catch {}
+		throw new Error(errorMsg)
+	}
 	return res.json()
 }
 
@@ -19,7 +26,14 @@ export async function apiPost(path, body) {
 		headers: getHeaders(),
 		body: JSON.stringify(body),
 	})
-	if (!res.ok) throw new Error(`POST ${path} failed`)
+	if (!res.ok) {
+		let errorMsg = `POST ${path} failed`
+		try {
+			const data = await res.json()
+			if (data.error) errorMsg = data.error
+		} catch {}
+		throw new Error(errorMsg)
+	}
 	return res.json()
 }
 
